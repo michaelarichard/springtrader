@@ -31,6 +31,7 @@ pipeline {
       steps {
         container('skaffold') {
           unstash 'build'
+          sh 'echo hello world'
           sh "skaffold deploy -a image.json -n ${env.stagingNamespace}"
           stageMessage "Successfully deployed to staging:\nspringtrader-${env.product}.${env.stagingDomain}/spring-nanotrader-web/"
         }
